@@ -1,0 +1,39 @@
+using System.Threading;
+using System.Text;
+
+namespace Lesson6
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine(Actions(1));
+
+            Console.ReadLine();
+        }
+        static string Actions(int PlayerOptions)
+        {
+            string playerChoice;
+
+            switch (PlayerOptions)
+            {
+                case 0:
+                    playerChoice = "attack";
+                    break;
+                case 1:
+                    playerChoice = "defend";
+                    break;
+                case 2:
+                    playerChoice = "run";
+                    break;
+                case 3:
+                    playerChoice = "heal";
+                    break;
+                default:
+                    playerChoice = "nothing here for you";
+                    break;
+            }
+            return playerChoice;
+        }
+    }   
+}
