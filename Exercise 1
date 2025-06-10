@@ -1,0 +1,5 @@
+string playerName = "Your name is: ";
+int score  = 0;
+
+Console.WriteLine(playerName);
+Console.WriteLine(score);
