@@ -1,0 +1,18 @@
+int playerHealth = 100;
+
+if (playerHealth >= 70)
+{
+    Console.WriteLine("Healthy");
+}
+else if (playerHealth >= 30 && playerHealth <= 70)
+{
+    Console.WriteLine("Injured");
+}
+else if (playerHealth > 0 && playerHealth <= 30)
+{
+    Console.WriteLine("critical");
+}
+else
+{
+    Console.WriteLine("dead");
+}
