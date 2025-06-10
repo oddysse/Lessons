@@ -1,0 +1,19 @@
+namespace Lesson7
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            for (int i = 1; i <= 5; i++)
+            {
+                int enemies = 0;
+                if (i >= 1)
+                {
+                    Console.WriteLine("Level: " + i);
+                    enemies += 2;
+                }
+                Console.WriteLine("enemies " + enemies);
+            }
+        }
+    }
+}
