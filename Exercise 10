@@ -1,0 +1,21 @@
+using System;
+using System.Threading;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int health = 100;
+        Random rnd = new Random();
+
+        while (health > 0)
+        {
+            int damage = rnd.Next(5, 16);
+            health -= damage;
+            Console.WriteLine($"You took {damage} damage. Health: {health}");
+
+            Thread.Sleep(1000);
+        }
+        Console.WriteLine("Game Over!");
+    }
+}
