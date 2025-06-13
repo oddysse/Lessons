@@ -1,0 +1,19 @@
+int timer = 15;
+
+while (timer >= 0)
+{
+    Console.WriteLine(timer);
+    if (timer % 2 == 0)
+    {
+        Console.WriteLine($"Odd seconds: {timer}");
+    }
+    else 
+    {
+        Console.WriteLine($"Even seconds: {timer}");
+    }
+    if ( timer == 0)
+    { 
+        Console.WriteLine("Timer ended");
+    }
+    timer--;
+}
