@@ -1,0 +1,13 @@
+string[] inventory = { "Potion", "Sword", "Key", "Shield", "Poison" };
+
+foreach (string item in inventory)
+{
+    if (item == "Poison")
+    {
+        Console.WriteLine("Dangerous item: Poison");
+    }
+    else
+    {
+        Console.WriteLine($"Safe item: {item}");
+    }
+}
