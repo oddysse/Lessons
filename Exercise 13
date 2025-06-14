@@ -1,0 +1,15 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int XP = GetRandomXP();
+        Console.WriteLine($"You gained {XP} XP!");
+    }
+    static int GetRandomXP()
+    {
+        Random rnd = new Random();
+        return rnd.Next(10, 51);
+    }
+}
