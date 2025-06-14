@@ -1,0 +1,17 @@
+using System;
+
+namespace Greeting
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            GreetPlayer();
+        }
+
+        static void GreetPlayer()
+        {
+            Console.WriteLine("Welcome, hero!");
+        }
+    }
+}
