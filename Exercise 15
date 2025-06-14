@@ -1,0 +1,44 @@
+using System;
+using System.Threading;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int health = 100;
+        bool isHealingTurn = false;
+
+        while (health >= 10 && health <= 120)
+        {
+            if (isHealingTurn)
+            {
+                health = Heal(health);
+            }
+            else
+            { 
+                health = TakeDamage(health);
+            }
+
+            Console.WriteLine($"Current Health: {health}");
+            Thread.Sleep(1000);
+            isHealingTurn = !isHealingTurn;
+        }
+
+        Console.WriteLine("End of Battle: Health out of safe range.");
+    }
+
+    static int TakeDamage(int h)
+    {
+        Random rnd = new Random();
+        int damage = rnd.Next(5, 16);
+        Console.WriteLine($"You took {damage} damage.");
+        return h - damage;
+    }
+    static int Heal(int h)
+    {
+        Random rnd = new Random();
+        int heal = rnd.Next(10, 21);
+        Console.WriteLine($"You healed {heal} health.");
+        return h + heal;
+    }
+}
