@@ -1,0 +1,14 @@
+using System.Numerics;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        AnnounceLevel(1);
+        AnnounceLevel(3);
+    }
+    static void AnnounceLevel(int Level)
+    {
+        Console.WriteLine($"Starting Level {Level}");
+    }
+}
