@@ -1,0 +1,62 @@
+using System;
+using System.Threading;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int health = 100;
+        int xp = 0;
+        int turn = 0;
+
+        Random actionRandomizer = new Random();
+
+        while (health >= 10 && health <= 120)
+        {
+            turn++;
+            int action = actionRandomizer.Next(0, 2);
+
+            if (action == 0)
+            {
+                health = TakeDamage(health);
+            }
+            else
+            {
+                health = health(health);
+            }
+
+            xp += 10;
+            Console.WriteLine($"Turn: {turn}, Current Health: {health}, XP: {xp}");
+
+            if (health < 20)
+            {
+                Console.WriteLine("Player is Critical!");
+            }
+
+            if (xp >= 100)
+            {
+                Console.WriteLine("Congrats! Level up");
+            }
+
+            Thread.Sleep(1000);
+        }
+
+        Console.WriteLine("End of Battle: Health out of safe range.");
+    }
+
+    static int TakeDamage(int h)
+    {
+        Random rnd = new Random();
+        int damage = rnd.Next(5, 16);
+        Console.WriteLine($"You took {damage} damage.");
+        return h - damage;
+    }
+
+    static int Heal(int h)
+    {
+        Random rnd = new Random();
+        int heal = rnd.Next(10, 21);
+        Console.WriteLine($"You heal {heal} health");
+        return h + heal;
+    }
+}
