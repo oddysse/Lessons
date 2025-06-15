@@ -1,0 +1,31 @@
+using System;
+using System.Threading;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int health = 100;
+
+        while (health > 0)
+        {
+            health = TakeDamage(health);
+            Console.WriteLine($"Current Health: {health}");
+
+            if (health > 20)
+            {
+                Console.WriteLine("Player is Critical!");
+            }
+            Thread.Sleep(1000);
+        }
+        Console.WriteLine("Game Over!");
+    }
+
+    static int TakeDamage(int currentHealth)
+    {
+        Random rnd = new Random();
+        int damage = rnd.Next(5, 16);
+        Console.WriteLine($"You took {damage} damage.");
+        return currentHealth - damage;
+    }
+}
