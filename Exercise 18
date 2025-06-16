@@ -1,0 +1,24 @@
+using System;
+using System.Threading;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        HashSet<string> achievements = new HashSet<string>();
+
+        achievements.Add("Here you are :)");
+        achievements.Add("Where have you been hiding?");
+        achievements.Add("Good End...");
+        achievements.Add("Bad End (I hope you are happy)");
+        achievements.Add("One with Everything they see");
+        achievements.Add("Good End...");
+
+        foreach (string achievement in achievements)
+        {
+            Console.WriteLine($"Unlocked {achievement}");
+        }
+        Console.WriteLine($"The total amount of unique achievements {achievements.Count}");
+    }
+}
