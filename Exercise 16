@@ -1,0 +1,23 @@
+using System;
+using System.Threading;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        List<string> list = new List<string>();
+
+        list.Add("Sword");
+        list.Add("Potion");
+        list.Add("Food");
+        list.Add("Ore");
+        list.Add("Sleeping Bag");
+
+        foreach (string item in list)
+        {
+            Console.WriteLine(item);
+            Thread.Sleep(1000);
+        }
+    }
+}
