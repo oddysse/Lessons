@@ -1,0 +1,13 @@
+using System;
+using System.Threading;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        (string name, int HP, int Level) player = ("Psyon", 100, 2);
+
+        Console.WriteLine($"Player {player.name} has {player.HP} and is level {player.Level} ");
+    }
+}
