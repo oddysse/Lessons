@@ -1,0 +1,39 @@
+using System;
+using System.Threading;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        List<string> inventory = new List<string>() 
+        {
+            "sword",
+            "medicine",
+            "food",
+            "water",
+            "bow"
+        };
+
+        Dictionary<string, string> description = new Dictionary<string, string>() 
+        {
+            {"sword", "sharp weapon made for cutting or stabbing"},
+            {"medicine", "healing item used to make you better when you are damaged"},
+            {"food", "something you eat to lower your hunger"},
+            {"water", "a drinkable item meant to stave away thirst"},
+            {"bow", "long distance "}
+        };
+
+        foreach (string item in inventory)
+        { 
+            if (description.ContainsKey(item))
+            {
+                Console.WriteLine($"Item: {item} - Description: {description[item]}");
+            }
+            else
+            {
+                Console.WriteLine($"Item: {item} - Description: Unknown");
+            }
+        }
+    }
+}
