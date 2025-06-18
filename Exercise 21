@@ -1,0 +1,14 @@
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("What's your name: ");
+        string playerName = Console.ReadLine();
+
+        File.WriteAllText("player.txt", playerName);
+        Console.WriteLine("Player name was saved");
+    }
+}
