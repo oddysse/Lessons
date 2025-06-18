@@ -1,0 +1,19 @@
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("What's your name Player? ");
+        string player = Console.ReadLine();
+
+        Console.WriteLine($"Welcome {player} to the World of Umor");
+
+        string[] lines = File.ReadAllLines(player);
+        foreach (string line in lines)
+        { 
+            Console.WriteLine($"Player {line} was saved");
+        }
+    }
+}
