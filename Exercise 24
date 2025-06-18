@@ -1,0 +1,18 @@
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        LogEvent("Player has chosen their weapon");
+        LogEvent("The battle has begun");
+        LogEvent("The enemy has been defeated");
+    }
+
+    static void LogEvent(string message)
+    {
+        string LogEntry = $"[{DateTime.Now}] {message}";
+        File.AppendAllText("log.txt", LogEntry + Environment.NewLine);
+    }
+}
