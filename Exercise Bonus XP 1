@@ -1,0 +1,45 @@
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        (string name, int hp, int level, int xp) player = ("Asmodeus", 150, 5, 200);
+        string playerLine = $"{player.name}, {player.hp}, {player.level}, {player.xp}";
+
+        File.WriteAllText("playerdata.txt", playerLine);
+        Console.WriteLine("Player data saved.");
+
+        if (File.Exists("playerdata.txt"))
+        {
+            try
+            {
+                string data = File.ReadAllText("playerdata.txt");
+                string[] parts = data.Split(',');
+
+                if (parts.Length == 4)
+                {
+                    string name = parts[0];
+                    int hp = int.Parse(parts[1]);
+                    int level = int.Parse(parts[2]);
+                    int xp = int.Parse(parts[3]);
+
+                    Console.WriteLine($"Loaded Player: {name}, HP: {hp}, Level: {level}, XP: {xp}");
+                }
+                else
+                {
+                    Console.WriteLine("Error: Save file format is incorrect.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error reading save file: {ex.Message}");
+            }
+        }
+        else 
+        {
+            Console.WriteLine("Error: Save file not found.");
+        }
+    }
+}
