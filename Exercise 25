@@ -1,0 +1,22 @@
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        (string name, int hp, int level) player = ("Ana", 300, 14);
+        string playerLine = $"{player.name}, {player.hp}, {player.level}";
+        File.WriteAllText("playerdata.txt", playerLine);
+        Console.WriteLine("Player data saved.");
+
+        string data = File.ReadAllText("playerdata.txt");
+        string[] parts = data.Split(',');
+
+        string name = parts[0];
+        int hp = int.Parse(parts[1]);
+        int level = int.Parse(parts[2]);
+
+        Console.WriteLine($"Loaded Player: {name}, HP: {hp}, Level: {level}");
+    }
+}
