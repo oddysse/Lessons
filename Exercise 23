@@ -1,0 +1,27 @@
+using System;
+using System.IO;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        List<string> inventory = new List<string>()
+        {
+            "spear",
+            "money",
+            "medicine",
+            "armor"
+        };
+
+        File.WriteAllLines("inventory.txt", inventory);
+        Console.WriteLine("Inventory was saved");
+
+        string[] inveentory = File.ReadAllLines("inventory.txt");
+
+        foreach (string item in inveentory)
+        {
+            Console.WriteLine($"Loaded item: {item}");
+        }
+    }
+}
