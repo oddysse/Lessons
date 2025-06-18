@@ -1,0 +1,37 @@
+using System;
+using System.Threading;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Dictionary<string, int> weaponDamage = new Dictionary<string, int>();
+
+        weaponDamage.Add("sword", 12);
+        weaponDamage.Add("hammer", 18);
+        weaponDamage.Add("spear", 15);
+
+        int playerDamage = weaponDamage["Player"];
+
+        if (weaponDamage.ContainsKey("sword"))
+        {
+            Console.WriteLine($"Weapon Damage {weaponDamage["sword"]}");
+        }
+
+        if (weaponDamage.ContainsKey("hammer"))
+        {
+            Console.WriteLine($"Weapon Damage {weaponDamage ["hammer"]}");
+        }
+
+        if (weaponDamage.ContainsKey("spear"))
+        {
+            Console.WriteLine($"Weapon Damage {weaponDamage ["spear"]}");
+        }
+
+        foreach (var attack in weaponDamage)
+        {
+            Console.WriteLine($"{weaponDamage}: {}");
+        }
+    }
+}
