@@ -1,0 +1,19 @@
+using System;
+using System.IO;
+
+class Program
+{
+    static void main(string[] args)
+    {
+        Log("Game started.");
+        Log("Player entered dungeon.");
+        Log("Player defeated final boss");
+
+        Console.WriteLine("Event logged to file");
+    }
+    static void Log(string message)
+    {
+        string entry = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}]{message}";
+        File.AppendAllText("log.txt", entry + Environment.NewLine);
+    }
+}
