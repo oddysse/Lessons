@@ -1,0 +1,20 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Enter your level: ");
+        string input = Console.ReadLine();
+
+        try
+        {
+            int level = int.Parse(input);
+            Console.WriteLine($"Your level is {level}");
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Error: Please enter a valid number.");
+        }
+    }
+}
