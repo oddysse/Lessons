@@ -1,0 +1,23 @@
+using System;
+using System.Diagnostics;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int playerXP = GainXP(-10);
+        Console.WriteLine($"Current XP: {playerXP}");
+    }
+    static int GainXP(int xp)
+    {
+        Debug.Assert(xp >= 0, "XP should never be negative!" );
+
+        if( xp < 0)
+        {
+            Console.WriteLine("Warning: Tried to add negative XP. Ignored.");
+            return 0;
+        }
+
+        return xp;
+    }
+}
