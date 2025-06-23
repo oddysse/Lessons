@@ -1,0 +1,17 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int currentHP = 80;
+        int newHP = Heal(currentHP);
+        Console.WriteLine($"New HP after healing: {newHP}");
+    }
+    static int Heal(int hp)
+    {
+        Random rnd = new Random();
+        int healed = rnd.Next(10, 21);
+        return hp + healed;
+    }
+}
