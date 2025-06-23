@@ -1,0 +1,36 @@
+using System;
+using System.Diagnostics;
+using System.IO;
+
+class Program
+{  
+    static int totalXP = 0;
+    static void Main(string[] args)
+    {
+        GainXP(20);
+        GainXP(-5);
+        GainXP(200);
+        Console.WriteLine($"Total XP: {totalXP}");
+    }
+
+    static void GainXP(int xp)
+    {
+        Debug.Assert(xp >= 0, "XP should never be negative!");
+
+        if (xp < 0 )
+        {
+            Console.WriteLine("Warning: Tried to add negative XP. Ignored.");
+            LogXP("Attempted to add negative XP - ignored.");
+            return;
+        }
+
+        totalXP += xp;
+        Console.WriteLine($"+{xp} XP gained!");
+        LogXP($"+{xp} XP gained. Total: {totalXP}");
+    }
+    static void LogXP(string message)
+    {
+        string logEntry = $"[{DateTime.Now}] {message}";
+        File.AppendAllText("xp_log.txt", logEntry + Environment.NewLine);
+    }
+}
