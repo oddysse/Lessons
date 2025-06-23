@@ -1,0 +1,14 @@
+using System;
+using System.Diagnostics;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int xp = -10;
+
+        Debug.Assert(xp >= 0, "XP should never be negative!");
+
+        Console.WriteLine($"Current XP: {xp}");
+    }
+}
