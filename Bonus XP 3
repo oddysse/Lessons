@@ -1,0 +1,36 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int level = 0;
+        int attempts = 0;
+        bool success = false;
+
+        while (attempts < 3 && !success)
+        {
+            Console.WriteLine("Enter your Level: ");
+            string input = Console.ReadLine();
+
+            try
+            {
+                level = int.Parse(input);
+                success = true;
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid input. Please enter a number.");
+                attempts++;
+            }
+        }
+
+        if (!success)
+        {
+            Console.WriteLine("Too many invalid attempts. Setting default level to 1.");
+            level = 1;
+        }
+
+        Console.WriteLine($"Your level is: {level}");
+    }
+}
