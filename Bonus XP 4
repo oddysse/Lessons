@@ -1,0 +1,22 @@
+using System;
+using System.IO;
+
+class Program
+{
+    static string playerName = "Chronos";
+    static string logFile = $"log_{DateTime.Now:yyyy_MM_dd_HHmm}_player_{playerName}.txt";
+
+    static void Main(string[] args)
+    {
+        Log("Game started.");
+        Log("Player slid down the cavern wall");
+        Log("Player faces the mycellium network");
+
+        Console.WriteLine("Session log complete.");
+    }
+    static void Log(string msg)
+    {
+        string entry = $"[{DateTime.Now:HH:mm:ss}][{playerName}]{msg}";
+        File.AppendAllText(logFile, entry + Environment.NewLine);
+    }
+}
