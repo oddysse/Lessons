@@ -1,0 +1,36 @@
+using System;
+using System.IO;
+using System.Numerics;
+
+class Program
+{
+    static string playerName = "Creature of Old";
+    static string sessionFile = $"log_{DateTime.Now:yyyy-MM-dd_hh-mm-tt}_player_{playerName}.txt";
+    static int totalXP = 0;
+
+    static void Main(string[] args)
+    {
+        LogEvent($"The {playerName} reaches their appendage out from the depths");
+        LogXP(4);
+        LogEvent("The light from the sky feels like burning against the skin of you");
+        LogXP(59);
+        LogEvent($"The {playerName} burns the world as compensation and all the smoke and ash blot the sun out of the sky");
+        LogXP(142);
+
+        Console.WriteLine("Session has concluded");
+    }
+
+    static void LogXP(int gainedXP)
+    {
+        totalXP += gainedXP;
+        string entry = $"[{DateTime.Now:HH:mm:ss tt}][{playerName}] XP +{gainedXP} (Total: {totalXP})";
+        File.AppendAllText(sessionFile, entry + Environment.NewLine);
+        Console.WriteLine(entry);
+    }
+    static void LogEvent(string message)
+    {
+        string entry = $"[{DateTime.Now:HH:mm:ss tt}][{playerName}]";
+        File.AppendAllText(sessionFile, entry + Environment.NewLine);
+        Console.WriteLine(entry);
+    }
+}
