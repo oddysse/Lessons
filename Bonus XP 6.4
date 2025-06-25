@@ -1,0 +1,42 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int totalTests = 0;
+        int passedTests = 0;
+
+        if (RunTest("Heal increases HP", TestHeal)) passedTests++;
+        totalTests++;
+
+        if (RunTest("Heal does not exceed cap", TestHeal_OverMax)) passedTests++;
+        totalTests++;
+
+        Console.WriteLine($"\n Test Report: {passedTests}/{totalTests} passed.");
+    }
+
+    static bool RunTest(string testName, Func<bool> testFunc)
+    {
+        bool result = testFunc();
+        Console.WriteLine(result ? $"{testName} passed." : $"{testName} failed");
+        return result;
+    }
+    static int Heal(int hp)
+    {
+        return hp + new Random().Next(10, 21);
+    }
+    static bool TestHeal()
+    {
+        int hp = 90;
+        int result = Heal(hp);
+        return result > hp && result <= hp + 20;
+    }
+
+    static bool TestHeal_OverMax()
+    {
+        int hp = 110;
+        int result = Heal(hp);
+        return result <= 120;
+    }
+}
