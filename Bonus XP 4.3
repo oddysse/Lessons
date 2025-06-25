@@ -1,0 +1,37 @@
+using System;
+using System.IO;
+using System.Numerics;
+
+class Program
+{
+    static string playerName = "Mortis";
+    static string sessionFile = $"log_{DateTime.Now:yyyy_MM_dd_HHmm}_player_{playerName}.txt";
+    static int totalXP = 0;
+
+    static void Main(string[] args)
+    {
+        LogEvent("Game begins");
+        LogXP(1);
+        LogEvent($"{playerName} starts to run for their lives");
+        LogXP(10);
+        LogEvent($"{playerName} tricked their pursuers to their demise");
+        LogXP(100);
+
+        Console.WriteLine("Session log complete.");
+    }
+
+    static void LogXP(int gainedXP)
+    {
+        totalXP += gainedXP;
+        string entry = $"[{DateTime.Now:HH:mm:ss}][{playerName}]XP +{gainedXP} (Total: {totalXP})";
+        File.AppendAllText(sessionFile, entry + Environment.NewLine);
+        Console.WriteLine(entry);
+    }
+
+    static void LogEvent(string message)
+    {
+        string entry = $"[{DateTime.Now:HH:mm:ss}][{playerName}] EVENT: {message}";
+        File.AppendAllText (sessionFile, entry + Environment.NewLine); 
+        Console.WriteLine(entry);
+    }
+}
