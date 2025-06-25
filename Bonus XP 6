@@ -1,0 +1,24 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        bool passed = TestHeal();
+        Console.WriteLine(passed ? "TestHeal passed." : "TestHeal failed.");
+    }
+
+    static int Heal(int hp)
+    {
+        Random rnd = new Random();
+        int healed = rnd.Next(2, 21);
+        return hp + healed;
+    }
+
+    static bool TestHeal()
+    {
+        int originalHP = 100;
+        int healedHP = Heal(originalHP);
+        return healedHP > originalHP && healedHP <= originalHP + 20;
+    }
+}
