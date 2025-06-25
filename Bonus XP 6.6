@@ -1,0 +1,32 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        RunTest("GainXP works", TestGainXP);
+        RunTest("TakeDamage reduces HP", TestTakeDamage);
+    }
+
+    static bool TestGainXP()
+    {
+        int oldXP = 50;
+        int gained = GainXP(30);
+        return gained > oldXP;
+    }
+
+    static bool TestTakeDamage()
+    {
+        int oldHP = 100;
+        int damaged = TakeDamage(oldHP);
+        return damaged < oldHP && damaged >= oldHP -15;
+    }
+
+    static int GainXP(int xp) => 50 + xp;
+    static int TakeDamage(int hp) => hp - new Random().Next(5, 16);
+
+    static void RunTest(string label , Func<bool> test)
+    {
+        Console.WriteLine(test() ? $"{label}" : $"{label}");
+    }
+}
