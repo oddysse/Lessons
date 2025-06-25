@@ -1,0 +1,19 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        List<string> inventory = new List<string>{"sword", "Potion", "Sheild"};
+
+        inventory.Add("Key");
+
+        inventory.Remove("Potion");
+
+        Console.WriteLine("Your current inventory: ");
+        foreach (var item in inventory)
+        {
+            Console.WriteLine($"- {item}");
+        }
+    }
+}
