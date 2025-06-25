@@ -1,0 +1,31 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        bool test1 = TestHeal();
+        Console.WriteLine(test1 ? "TestHeal passed." : "TestHeal failed.");
+
+        bool test2 = TestHeal_OverMax();
+        Console.WriteLine(test2 ? "TestHeal_OverMax passed." : "TestHeal_OverMax failed.");
+    }
+    static int Heal(int hp)
+    {
+        Random rnd = new Random();
+        int healed = rnd.Next(1, 23);
+        return hp + healed;
+    }
+    static bool TestHeal()
+    {
+        int originalHP = 100;
+        int healedHP = Heal(originalHP);
+        return healedHP > originalHP && healedHP <= originalHP + 30;
+    }
+    static bool TestHeal_OverMax()
+    {
+        int hp = 130;
+        int healedHP = Heal(hp);
+        return healedHP <= 120;
+    }
+}
