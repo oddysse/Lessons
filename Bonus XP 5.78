@@ -1,0 +1,79 @@
+using System;
+using System.IO;
+using System.Text;
+using System.Security.Cryptography;
+
+class Program
+{
+    static string filePath = "secret.txt";
+
+    static void Main(string[] args)
+    {
+        if (!File.Exists(filePath))
+        {
+            Console.WriteLine("Save not found. Creating encrypted save file...");
+            string defauldData = "[SAFE] Welcome to your encrypted adventure!";
+            byte defaultKey = GetKeyFromPassword("defaultpass");
+            string encrypted = EncryptDecrypt(defauldData, defaultKey);
+            File.WriteAllText(filePath, encrypted);
+        }
+
+        int attempts = 0;
+        bool success = false;
+
+        while (attempts < 3 && !success)
+        {
+            Console.Write("Enter your password: ");
+            string password = Console.ReadLine();
+            byte xorKey = GetKeyFromPassword(password);
+
+            try
+            {
+                string rawContent = File.ReadAllText(filePath);
+                string decrypted = EncryptDecrypt(rawContent, xorKey);
+
+                if (decrypted.StartsWith("[SAFE]"))
+                {
+                    Console.WriteLine("Secret File Loaded: ");
+                    Console.WriteLine(decrypted.Substring(6));
+                    success = true;
+                }
+                else
+                {
+                    attempts++;
+                    Console.WriteLine("Incorrect password. Try again.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error reading or decrypting file: {ex.Message}");
+                break;
+            }
+        }
+
+        if (!success)
+        {
+            Console.WriteLine("Failed to decrypt after 3 attempts. Exiting...");
+        }
+    }
+
+    static byte GetKeyFromPassword(string password)
+    {
+        using (SHA256 sha = SHA256.Create())
+        {
+            byte[] hash = sha.ComputeHash(Encoding.UTF8.GetBytes(password));
+            return hash[0];
+        }
+    }
+
+    static string EncryptDecrypt(string input, byte key)
+    {
+        StringBuilder output = new StringBuilder();
+        foreach (char c in input)
+        {
+            char encryptedChar = (char)(c ^ key);
+            output.Append(encryptedChar);
+        }
+        return output.ToString();
+    }
+}
