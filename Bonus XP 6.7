@@ -1,0 +1,27 @@
+using System;
+using System.IO;
+
+class Program
+{
+    static string logFile = $"test_log_{DateTime.Now:yyyyMMdd_HHmm}.txt";
+
+    static void Main()
+    {
+        RunTest("Heal Test", TestHeal);
+        RunTest("XP Test", TestGainXP);
+    }
+
+    static void RunTest(string name, Func<bool> test)
+    {
+        bool result = test();
+        string msg = $"{DateTime.Now:HH:mm:ss}{name} - {(result ? "PASS" : "FAIL")}";
+        Console.WriteLine(msg);
+        File.AppendAllText(logFile, msg + Environment.NewLine);
+    }
+
+    static bool TestHeal() => Heal(90) > 90;
+    static bool TestGainXP() => GainXP(30) > 50;
+
+    static int Heal(int hp) => hp + new Random().Next(10, 21);
+    static int GainXP(int xp) => 50 + xp;
+}
