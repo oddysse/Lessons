@@ -1,0 +1,26 @@
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        string filePath = "secret.txt";
+
+        if (!File.Exists(filePath))
+        {
+            Console.WriteLine("Save not found. Creating new save file...");
+            File.WriteAllText(filePath, "Welcome to your adventure! \nThis is your secret save file");
+        }
+        try
+        {
+            string content = File.ReadAllText(filePath);
+            Console.WriteLine("Secret File Loaded: ");
+            Console.WriteLine(content);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred reading the file: {ex.Message}");
+        }
+    }
+}
