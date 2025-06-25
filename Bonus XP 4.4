@@ -1,0 +1,37 @@
+using System;
+using System.IO;
+using System.Numerics;
+
+class Program
+{
+    static string playerName = "SLayer of MAny";
+    static string sessionFile = $"log_{DateTime.Now:yyyy_MM_dd_HHmm}_player_.txt";
+    static int totalXP = 0;
+
+    static void Main(string[] args)
+    {
+        LogEvent($"Welcome {playerName} to your final test");
+        LogXP(2);
+        LogEvent("The gates open in the arena and waves of those that watch pour out");
+        LogXP(13);
+        LogEvent("In the end all of hell is empty and only you procide");
+        LogXP(37);
+
+        Console.WriteLine("Session has concluded");
+    }
+
+    static void LogXP(int gainedXP)
+    {
+        totalXP += gainedXP;
+        string entry = $"[{DateTime.Now:HH:mm:ss tt}][{playerName}] XP +{gainedXP} (Total: {totalXP})";
+        File.AppendAllText(sessionFile, entry + Environment.NewLine);
+        Console.WriteLine(entry);
+    }
+
+    static void LogEvent(string message)
+    {
+        string entry = $"[{DateTime.Now:HH:mm:ss tt}][{playerName}] Event: {message}";
+        File.AppendAllText(sessionFile, entry + Environment.NewLine);
+        Console.WriteLine(entry);
+    }
+}
