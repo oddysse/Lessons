@@ -1,0 +1,37 @@
+using System;
+
+class PlayerTests
+{
+    public int Heal(int hp) => new Random().Next(10, 21);
+
+    public bool TestHeal()
+    {
+        int hp = 90;
+        int healed = Heal(hp);
+        return healed > hp && healed <= 110;
+    }
+
+    public bool TestHealCap()
+    {
+        int hp = 115;
+        int healed = Heal(hp);
+        return healed <= 135;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        var tests = new PlayerTests();
+
+        RunTest("Heal Test", tests.TestHeal);
+        RunTest("Heal Cap Test", tests.TestHealCap);
+    }
+
+    static void RunTest(string name, Func<bool> test)
+    {
+        bool result = test();
+        Console.WriteLine(result ? $"{name}" : $"{name}");
+    }
+}
